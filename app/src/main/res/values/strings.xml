@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">这是是测试，权限名称</string>
+    <string name="accessibility">这是是测试内容，用来描述</string>
+</resources>
