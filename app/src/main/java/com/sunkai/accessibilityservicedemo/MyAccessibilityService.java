@@ -62,7 +62,7 @@ public class MyAccessibilityService extends AccessibilityService {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 for (AccessibilityNodeInfo nodeInfo : accessibilityNodeInfo.findAccessibilityNodeInfosByViewId(id)) {
                     if (nodeInfo.isVisibleToUser()) {
-                        if (nodeInfo.isClickable()) {// 这里并不能
+                        if (nodeInfo.isClickable()) {// 这里并不能除非 onTouch 事件，所以可以用 onTouch 判断事件来源是不是用户点击
                             nodeInfo.performAction(AccessibilityNodeInfo.ACTION_PASTE);
                             nodeInfo.performAction(AccessibilityNodeInfo.ACTION_SELECT);
                             nodeInfo.performAction(AccessibilityNodeInfo.ACTION_FOCUS);
