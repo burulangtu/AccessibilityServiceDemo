@@ -2,6 +2,8 @@ package com.sunkai.test;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -29,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
                 }, 3 * 1000);
             }
         });
+        button1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Log.e("SK", "event.x:" + event.getX() + ",y:" + event.getY() + ",rawX:" + event.getRawX() + ",rawY:" + event.getRawY());
+                // }
+                return false;
+            }
+        });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
                         button1.setVisibility(View.VISIBLE);
                     }
-                },3*1000);
+                }, 3 * 1000);
             }
         });
     }

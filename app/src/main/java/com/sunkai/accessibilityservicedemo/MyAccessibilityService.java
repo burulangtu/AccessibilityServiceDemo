@@ -25,7 +25,7 @@ public class MyAccessibilityService extends AccessibilityService {
             handler.postDelayed(runnable, 1000);
             if (search && listen) {
                 Log.e("SK", "定时任务");
-                searchButton();
+               searchButton();
             }
         }
     };
@@ -62,7 +62,10 @@ public class MyAccessibilityService extends AccessibilityService {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 for (AccessibilityNodeInfo nodeInfo : accessibilityNodeInfo.findAccessibilityNodeInfosByViewId(id)) {
                     if (nodeInfo.isVisibleToUser()) {
-                        if (nodeInfo.isClickable()) {
+                        if (nodeInfo.isClickable()) {// 这里并不能
+                            nodeInfo.performAction(AccessibilityNodeInfo.ACTION_PASTE);
+                            nodeInfo.performAction(AccessibilityNodeInfo.ACTION_SELECT);
+                            nodeInfo.performAction(AccessibilityNodeInfo.ACTION_FOCUS);
                             nodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
                         }
                     } else {
